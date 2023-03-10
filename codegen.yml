@@ -1,0 +1,17 @@
+schema: https://swapi-graphql.netlify.app/.netlify/functions/index
+documents: '{graphql,utils}/**/*.{tsx,ts}'
+generates:
+  graphql/generated.ts:
+    config:
+      strictScalars: true
+      inlineFragmentTypes: combine
+      scalars: 
+        Date: 'string'
+        DateTime: 'string'
+        Time: 'string'
+        Upload: 'string'
+        Mixed: 'string | number | string[] | number[]'
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-urql
