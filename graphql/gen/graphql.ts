@@ -1,11 +1,10 @@
-import gql from 'graphql-tag';
-import * as Urql from 'urql';
+/* eslint-disable */
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -1309,18 +1308,4 @@ export type AllFilmsQueryVariables = Exact<{ [key: string]: never; }>;
 export type AllFilmsQuery = { __typename?: 'Root', allFilms?: { __typename?: 'FilmsConnection', films?: Array<{ __typename?: 'Film', title?: string | null, director?: string | null, releaseDate?: string | null } | null> | null } | null };
 
 
-export const AllFilmsDocument = gql`
-    query AllFilms {
-  allFilms {
-    films {
-      title
-      director
-      releaseDate
-    }
-  }
-}
-    `;
-
-export function useAllFilmsQuery(options?: Omit<Urql.UseQueryArgs<AllFilmsQueryVariables>, 'query'>) {
-  return Urql.useQuery<AllFilmsQuery, AllFilmsQueryVariables>({ query: AllFilmsDocument, ...options });
-};
+export const AllFilmsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AllFilms"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"allFilms"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"films"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"director"}},{"kind":"Field","name":{"kind":"Name","value":"releaseDate"}}]}}]}}]}}]} as unknown as DocumentNode<AllFilmsQuery, AllFilmsQueryVariables>;
